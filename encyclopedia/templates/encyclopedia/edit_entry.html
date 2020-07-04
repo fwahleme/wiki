@@ -1,0 +1,28 @@
+{% extends "encyclopedia/encyclopedia_layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block entryTitle %}
+{% endblock %}
+
+{% block body %}
+    {% if body == '' %}
+        <h1>Create New Encyclopedia Entry</h1>
+    {% else %}
+        <h1>Edit Encyclopedia Entry</h1>
+    {% endif %}
+    <br>
+    <!--titleParm will be: '___new___' or the entry title.  
+        So we'll know if we're creating a new title or editing an existing one. -->
+    <form action="{% url 'editEntry' titleParm %}" method="post">
+        {% csrf_token %}
+        {{ titleForm }}
+        <input type="submit" value="Save">
+        <br>
+        <br>
+        <p>Enter body:</p>
+        <textarea id="bodyText" name="bodyText">{{body}}</textarea>
+    </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "encyclopedia/encyclopedia_layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block body %}
+    <h4>These Encyclopedia Entries Contain "{{searchStr}}"</h4>
+    <!-- <h4>Your search has filtered these entries:</h4> -->
+    <br>
+    <ul>
+        {% for entry in filteredEntries %}
+            <li><a href="{{ request.path }}{{ subpathParm }}{{ entry }}">{{ entry }}</a></li>
+        {% empty %}
+            <li>no matching entries</li>
+        {% endfor %}
+    </ul> 
+{% endblock %}

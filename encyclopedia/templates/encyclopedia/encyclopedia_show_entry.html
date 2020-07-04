@@ -1,0 +1,24 @@
+{% extends "encyclopedia/encyclopedia_layout.html" %}
+
+{% block title %}
+    {{ titleParm }}
+{% endblock %}
+
+{% block entryTitle %}
+    {{ titleParm }}
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+    <div>
+        <br>
+        <button type="button"><a href="{% url 'editEntry' titleParm %}">Edit {{titleParm}}</a></button>
+        
+        <br>
+        <br>
+    </div>
+    {{ contentParm|safe }}
+
+{% endblock %}
